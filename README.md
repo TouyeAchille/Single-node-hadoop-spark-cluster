@@ -5,9 +5,9 @@ In a typical Hadoop setup, you have:
 
 * **NameNode** → manages metadata (file system structure, file locations)
 * **DataNode** → stores the actual data blocks
-* Other services like **ResourceManager** and **NodeManager** (for processing)
+* Other services like **ResourceManager(Like YARN)** and **NodeManager** (for processing)
 
-In a **single-node cluster**, all of these run on the same system. That means:
+In a **single-node cluster**, all of these run on the same system.
 
 ### Why use it?
 
