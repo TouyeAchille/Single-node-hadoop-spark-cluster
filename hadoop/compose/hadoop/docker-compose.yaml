@@ -1,0 +1,33 @@
+
+name: hadoop
+services:
+  single-node-cluster:
+    build: 
+      context: ../../
+      dockerfile: Dockerfile
+    volumes:
+      - hdfs_namenode:/opt/hadoop/data/namenode
+      - hdfs_datanode:/opt/hadoop/data/datanode
+
+    ports:
+      - 9870:9870       # NameNode UI
+      - 8088:8088       # ResourceManager UI
+
+    env_file:
+      - ./config
+      - ./.env
+
+    container_name: single-node-hadoop
+    hostname: single-node-hadoop
+
+    stdin_open: true
+    tty: true
+    
+    command: "/bin/bash -c /opt/hadoop/start-hadoop.sh"
+    
+volumes:
+  hdfs_namenode:
+  hdfs_datanode:      
+
+
+

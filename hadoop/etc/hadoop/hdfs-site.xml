@@ -1,0 +1,20 @@
+<configuration>
+<property>
+<name>dfs.namenode.rpc-address</name>
+<value>single-node-hadoop:8020</value>
+</property>
+
+<property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///opt/hadoop/data/namenode</value>
+</property>
+
+<property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///opt/hadoop/data/datanode</value>
+</property>
+<property>
+    <name>dfs.replication</name>
+    <value>1</value>
+</property>
+</configuration>
