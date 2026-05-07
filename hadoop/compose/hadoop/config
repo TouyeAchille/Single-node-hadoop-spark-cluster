@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CORE-SITE.XML_fs.defaultFS=hdfs://single-node-hadoop
-CORE-SITE.XML_fs.defaultFS=hdfs://single-node-hadoop
+CORE-SITE.XML_fs.defaultFS=hdfs://single-node-hadoop:8020
 
 HDFS-SITE.XML_dfs.namenode.rpc-address=single-node-hadoop:8020
 HDFS-SITE.XML_dfs.namenode.name.dir=file:///opt/hadoop/data/namenode
@@ -31,6 +30,8 @@ YARN-SITE.XML_yarn.nodemanager.pmem-check-enabled=false
 YARN-SITE.XML_yarn.nodemanager.delete.debug-delay-sec=600
 YARN-SITE.XML_yarn.nodemanager.vmem-check-enabled=false
 YARN-SITE.XML_yarn.nodemanager.aux-services=mapreduce_shuffle
+YARN-SITE.XML_yarn.nodemanager.remote-app-log-dir=/tmp/logs
+YARN-SITE.XML_yarn.log-aggregation-enable=http://single-node-hadoop:19888/jobhistory/logs 
 
 CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.maximum-applications=10000
 CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.maximum-am-resource-percent=0.1

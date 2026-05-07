@@ -1,1 +1,1 @@
-fs.defaultFS: hdfs://namenode
+fs.defaultFS: hdfs://single-node-hadoop:8020

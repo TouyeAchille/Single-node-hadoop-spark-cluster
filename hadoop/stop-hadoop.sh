@@ -1,15 +1,15 @@
 #!/bin/bash
+set -e
 
-echo -e "Stop NameNode daemon and DataNode daemon\n"
+echo "Stopping HDFS daemons..."
+hdfs --daemon stop namenode || true
+hdfs --daemon stop datanode || true
 
-$HADOOP_HOME/sbin/stop-dfs.sh
+echo "Stopping YARN daemons..."
+yarn --daemon stop resourcemanager || true
+yarn --daemon stop nodemanager || true
 
-echo -e "Stop ResourceManager daemon and NodeManager daemon\n"
+sleep 2
 
-$HADOOP_HOME/sbin/stop-yarn.sh
-
-echo -e "\n"
-
-echo -e "Hadoop services stopped. Current JVM processes:\n"
-
+echo -e "\nRemaining Java processes:"
 jps

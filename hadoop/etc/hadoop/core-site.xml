@@ -1,6 +1,6 @@
 <configuration>
 <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://single-node-hadoop</value>
+    <value>hdfs://single-node-hadoop:8020</value>
 </property>
 </configuration>

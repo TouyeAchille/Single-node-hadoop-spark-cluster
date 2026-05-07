@@ -1,5 +1,7 @@
-yarn.resourcemanager.hostname: resourcemanager
+yarn.resourcemanager.hostname: single-node-hadoop
 yarn.nodemanager.pmem-check-enabled: false
 yarn.nodemanager.aux-services: mapreduce_shuffle
 yarn.nodemanager.vmem-check-enabled: false
 yarn.nodemanager.delete.debug-delay-sec: 600
+yarn.nodemanager.remote-app-log-dir: /tmp/logs
+yarn.log-aggregation-enable: http://single-node-hadoop:19888/jobhistory/logs 
