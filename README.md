@@ -1,24 +1,27 @@
-# Single-node-hadoop-cluster
-A **Hadoop single-node cluster** is the simplest way to run Hadoop, where all its core components run on one machine instead of being distributed across multiple servers. It’s a **mini Hadoop cluster** running on one computer, mainly for **practice or experimentation**.
+# Hadoop Single Node Installation Setup with Docker
 
-In a typical Hadoop setup, you have:
+This project sets up a Hadoop environment in a Docker container. It also includes a Spark and Jupyter Notebook installation for data processing and analysis. Follow the instructions below to build and run the Hadoop cluster in a single-node Docker container.
 
-* **NameNode** → manages metadata (file system structure, file locations)
-* **DataNode** → stores the actual data blocks
-* Other services like **ResourceManager(Like YARN)** and **NodeManager** (for processing)
+his Single node Hadoop installation can help to perform simple operations using Hadoop MapReduce and the Hadoop Distributed File System (HDFS).
 
-In a **single-node cluster**, all of these run on the same system.
+## 1. Build Image and Create Hadoop Container
+To start, build the Docker image and create the Hadoop container using Docker Compose.
 
-### Why use it?
+mv compose/hadoop/hadoop
 
-* Learning and testing Hadoop
-* Development and debugging
-* Running small workloads without needing multiple machines
+> docker compose up -d build
 
-### Limitations
+ 2. Open a New Terminal and Access the Container
+Once the container is up and running, execute the following command to access the container's shell:
+ 
+> docker exec -it single-node-hadoop bash
 
-* No fault tolerance (if the machine fails, everything is lost)
-* Not scalable
-* Not suitable for production use
 
+4. Unzip Dataset for Practical Work
+For the practical exercises, you will need to unzip the provided dataset file. Use the following command to unzip purchases.txt.gz:
+
+> gunzip dataset/purchases.txt.gz
+
+5 🛠️ Check if mapreduce job run well, use the following command
+> ./scripts/run_wordcount.sh
 
