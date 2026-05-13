@@ -136,7 +136,7 @@ cd Single-node-hadoop-cluster
 ## 2. Go to Hadoop Docker setup
 
 ```bash
-cd compose/hadoop/hadoop
+cd hadoop/compose/hadoop
 ```
 
 ---
@@ -163,7 +163,7 @@ Inside the container:
 
 ```bash
 cd workspace
-gunzip dataset/purchases.txt.gz
+gunzip datasets/purchases.txt.gz
 ```
 
 ---
