@@ -1,5 +1,5 @@
 
-name: hadoop
+name: hadoop-spark
 services:
   single-node-cluster:
     build: 
@@ -10,20 +10,26 @@ services:
       - hdfs_datanode:/opt/hadoop/data/datanode
 
     ports:
-      - 9870:9870       # NameNode UI
-      - 8088:8088       # ResourceManager UI
+      - "9870:9870"   # Hadoop NameNode UI
+      - "8088:8088"   # YARN ResourceManager
+      - "4041:4041"   # Spark Job UI
+      - "7077:7077"   # Spark Master R
+      - 18080:18080   # Spark History Server
+      - "8888:8888"   # Jupyter  
 
     env_file:
       - ./config
       - ./.env
 
-    container_name: single-node-hadoop
+    container_name: single-node-hadoop-spark
     hostname: single-node-hadoop
 
     stdin_open: true
     tty: true
     
-    command: "/bin/bash -c /opt/hadoop/start-hadoop.sh"
+
+    command: ["/bin/bash", "-c", "/opt/hadoop/start-hadoop.sh"]
+    
     
 volumes:
   hdfs_namenode:

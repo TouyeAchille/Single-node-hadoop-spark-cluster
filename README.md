@@ -152,10 +152,19 @@ docker compose up -d --build
 # 2. Access the container
 
 ```bash
-docker exec -it single-node-hadoop bash
+docker exec -it single-node-hadoop-spark bash
+```
+
+# 2.1 Start spark
+
+```bash
+
+bash  start-all.sh 
 ```
 
 ---
+
+
 
 # 3. Dataset preparation
 
@@ -163,12 +172,14 @@ Inside the container:
 
 ```bash
 cd workspace
-gunzip datasets/purchases.txt.gz
+gunzip -v datasets/purchases.txt.gz
 ```
 
 ---
 
 # 4. Verify cluster status
+
+
 
 ```bash
 jps
@@ -180,22 +191,46 @@ Expected output:
 * DataNode
 * ResourceManager
 * NodeManager
+* Master
+* Worker
+* HistoryServer
 
 ---
 
-# 5. Run exercises
+# 5. Run Exercises
 
 Start the practical exercises from the provided TP guide:
 
-👉 *(insert your TP link here)*
+* Go to **ESME Moodle for TP Hadoop-Spark**
+* Work in **JupyterLab** for experimentation
 
 ---
 
-# Notes (Important)
+## Activate the virtual environment
 
-* This setup is **single-node (pseudo-distributed mode)**
-* Data is not fault-tolerant like real clusters
-* Perfect for learning, not production
+```bash
+source venv/bin/activate
+```
+
+---
+
+## Launch JupyterLab
+
+```bash
+jupyter-lab --ip=0.0.0.0 --port=8888 --no-browser
+```
+
+---
+
+## Access JupyterLab
+
+Open your browser on the host machine and go to:
+
+[http://localhost:8888](http://localhost:8888)
+
+Then paste the authentication token displayed in the container terminal.
+
+
 
 
 
