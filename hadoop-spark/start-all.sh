@@ -14,6 +14,7 @@ echo "Starting Spark Worker..."
 echo "Starting History Server..."
 /opt/spark/sbin/start-history-server.sh
 
+
 echo "Cluster ready."
 
 echo "----------------------------------------"

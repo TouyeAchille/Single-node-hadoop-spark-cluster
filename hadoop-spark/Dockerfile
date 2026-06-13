@@ -43,6 +43,9 @@ RUN apt-get update && \
 # -------------------------------------------------------------
 # Python Environment Setup
 # -------------------------------------------------------------    
+ARG SPARK_VERSION=4.1.2
+
+ENV SPARK_VERSION=${SPARK_VERSION}
 
 RUN python3 -m venv ./workspace/venv
 ENV VENV_PATH=./workspace/venv/bin
@@ -51,7 +54,7 @@ RUN ${VENV_PATH}/pip install --no-cache-dir --upgrade pip
 
 RUN ${VENV_PATH}/pip install --no-cache-dir \
     jupyterlab \
-    pyspark==4.1.1 \
+    pyspark==${SPARK_VERSION} \
     findspark \
     ipykernel 
 
@@ -68,14 +71,12 @@ RUN mkdir -p /opt/hadoop/data/namenode \
 # -------------------------------------------------------------
 # Download Spark distribution
 # -------------------------------------------------------------
-ARG SPARK_VERSION=4.1.1
-ENV SPARK_VERSION=${SPARK_VERSION}
-RUN wget https://dlcdn.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
-    tar -xzf spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
-    mv spark-${SPARK_VERSION}-bin-hadoop3 /opt/spark && \
-    rm spark-${SPARK_VERSION}-bin-hadoop3.tgz 
 
-ENV SPARK_HOME=/opt/spark
+RUN wget https://dlcdn.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \ 
+    tar -xzf spark-${SPARK_VERSION}-bin-hadoop3.tgz && \ 
+    mv spark-${SPARK_VERSION}-bin-hadoop3 /opt/spark && \ 
+    rm spark-${SPARK_VERSION}-bin-hadoop3.tgz
+
 ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 RUN  mkdir -p /opt/spark/logs 
